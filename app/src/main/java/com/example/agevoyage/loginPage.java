@@ -20,7 +20,7 @@ public class loginPage extends AppCompatActivity {
         binding=ActivityLoginPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        DatabaseHelper databaseHelper = new DatabaseHelper(this);
+         databaseHelper = new DatabaseHelper(this);
         binding.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,12 +34,10 @@ public class loginPage extends AppCompatActivity {
 
                     if (checkCredentials==true){
                         Toast.makeText(loginPage.this, "Login successfull", Toast.LENGTH_SHORT).show();
-                        Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+                        Intent intent=new Intent(getApplicationContext(),select_state.class);
                         startActivity(intent);
                     }else {
                         Toast.makeText(loginPage.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
-
-
                     }
                 }
             }
@@ -48,6 +46,14 @@ public class loginPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(loginPage.this,signup.class);
+                startActivity(intent);
+            }
+        });
+        binding.loginadmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Handle the click event to login as admin
+                Intent intent = new Intent(loginPage.this, LoginAdmin.class);
                 startActivity(intent);
             }
         });

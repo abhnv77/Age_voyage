@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Age Voyage</string>
+    <string name="link_seeall"><a href="">See all</a></string>
+    <string name="select">Select Age</string>
+
+
 </resources>

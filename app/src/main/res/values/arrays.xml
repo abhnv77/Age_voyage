@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="job_categories_array">
+        <item> --Select Proffession--</item>
+        <item>Travellor</item>
+        <item>Business Professional</item>
+        <item>Teacher</item>
+        <item>Student</item>
+        <item> Retiree/Senior Citizen</item>
+        <item>Medical Professional</item>
+        <item>Engineer</item>
+        <!-- Add more job categories as needed -->
+    </string-array>
+
+    <string-array name="age_categories_array">
+        <item>--select Age--</item>
+        <item>All</item>
+        <item>5-12 (Kids)</item>
+        <item>13-18 (School children)</item>
+        <item>9-25 (Teenagers)</item>
+        <item>26-39 (Young Adults)</item>
+        <item>40-59  (Middle aged)</item>
+        <item>60+ (Senior Adults)</item>
+        <!-- Add more age categories as needed -->
+    </string-array>
+
+    <string-array name="age_categories">
+        <item>  choose the age category </item>
+        <item>All</item>
+        <item>5-12 (Kids)</item>
+        <item>13-18 (School children)</item>
+        <item>19-25 (Teenagers)</item>
+        <item>26-39 (Young Adults)</item>
+        <item>40-59  (Middle aged)</item>
+        <item>60+ (Senior Adults)</item>
+        <!-- Add more age categories as needed -->
+    </string-array>
+
+    <string-array name="best_times_to_visit">
+        <item> select best month </item>
+
+        <item> January  </item>
+        <item> February </item>
+        <item> March  </item>
+        <item> April  </item>
+        <item> May  </item>
+        <item> June  </item>
+        <item> July  </item>
+        <item> August  </item>
+        <item> September  </item>
+        <item> October  </item>
+        <item> November  </item>
+        <item> December  </item>
+        <!-- Add more months or ranges as needed -->
+    </string-array>
+<string-array name="spinnerSelectState">
+
+    <item>  select state  </item>
+    <item> Andhra Pradesh</item>
+    <item> Arunachal Pradesh</item>
+    <item> Assam</item>
+    <item> Bihar</item>
+    <item> Chhattisgarh</item>
+    <item> Goa</item>
+    <item> Gujarat</item>
+    <item> Haryana</item>
+    <item> Himachal Pradesh</item>
+    <item> Jharkhand</item>
+    <item> Kerala</item>
+    <item> Karnataka</item>
+
+</string-array>
+
+</resources>

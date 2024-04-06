@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "930905888943",
+    "project_id": "agevoyage-2b12d",
+    "storage_bucket": "agevoyage-2b12d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930905888943:android:6a425c86c36e3b30a19c5a",
+        "android_client_info": {
+          "package_name": "com.example.agevoyage"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtJBPbpHBYqUV1tw6GdakGgCPYtYWd1MU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

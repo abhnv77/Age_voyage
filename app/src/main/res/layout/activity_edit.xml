@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/bg"
+    tools:context=".EditActivity">
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EDIT OPTION"
+        android:fontFamily="@font/lato_black"
+        android:textSize="25sp"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="0dp"/>
+
+    <EditText
+        android:id="@+id/editTextPlaceName"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Enter Place Name"
+        android:layout_below="@id/textViewTitle"
+        android:layout_marginTop="10dp"
+        android:inputType="text" />
+
+    <Spinner
+        android:id="@+id/spinnerBestTime"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/editTextPlaceName"
+        android:layout_marginTop="10dp"
+        android:hint="Best Time to Visit" />
+
+    <Spinner
+        android:id="@+id/spinnerAgeCategory"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/spinnerBestTime"
+        android:layout_marginTop="10dp"
+        android:hint="Age Category" />
+
+    <Spinner
+        android:id="@+id/spinnerSelectState"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/spinnerAgeCategory"
+        android:layout_marginTop="10dp"
+        android:hint="Select State" />
+
+    <SeekBar
+        android:id="@+id/seekBar_budget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinnerSelectState"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/budget_amount"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekBar_budget"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Selected Amount: ₹0"
+        android:layout_gravity="center"
+        android:fontFamily="@font/lato_black"/>
+
+    <!-- Button for selecting an image -->
+    <Button
+        android:id="@+id/buttonSelectImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/budget_amount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Select Image" />
+
+    <!-- Button for saving/updating place details -->
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonSelectImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Save" />
+
+</RelativeLayout>
+
+<!--run-->
