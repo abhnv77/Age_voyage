@@ -2,6 +2,7 @@
     <string name="app_name">Age Voyage</string>
     <string name="link_seeall"><a href="">See all</a></string>
     <string name="select">Select Age</string>
+    <string name="otp_verification">otp_verification</string>
 
 
 </resources>

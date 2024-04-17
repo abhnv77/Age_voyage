@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="190dp"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="8dp"
-    android:elevation="12dp">
+    android:layout_width="180dp"
+    android:layout_height="220dp"
+    android:layout_margin="20dp"
+    app:cardCornerRadius="16dp"
+    android:elevation="25dp">
 
     <!-- Define your CardView layout here, for example: -->
     <LinearLayout
@@ -15,21 +14,34 @@
         android:padding="16dp">
 
         <!-- TextViews to display place details -->
+        <ImageView
+            android:id="@+id/favorite_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="3dp"
+            android:src="@drawable/baseline_favorite_border_24" />
+
         <TextView
             android:id="@+id/text_view_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:fontFamily="@font/lato_black"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <!-- ImageView to display the image -->
         <ImageView
             android:id="@+id/image_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:layout_marginTop="8dp"
             android:adjustViewBounds="true"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            />
+
+        <!-- TextView to display details -->
         <TextView
             android:id="@+id/text_view_details"
             android:layout_width="wrap_content"
@@ -37,6 +49,7 @@
             android:layout_marginTop="8dp"
             android:textSize="16sp" />
 
+        <!-- ImageView for icon in the top-right corner -->
 
     </LinearLayout>
 

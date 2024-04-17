@@ -6,7 +6,7 @@
         <item>Business Professional</item>
         <item>Teacher</item>
         <item>Student</item>
-        <item> Retiree/Senior Citizen</item>
+        <item>Retiree/Senior Citizen</item>
         <item>Medical Professional</item>
         <item>Engineer</item>
         <!-- Add more job categories as needed -->
@@ -17,7 +17,7 @@
         <item>All</item>
         <item>5-12 (Kids)</item>
         <item>13-18 (School children)</item>
-        <item>9-25 (Teenagers)</item>
+        <item>19-25 (Teenagers)</item>
         <item>26-39 (Young Adults)</item>
         <item>40-59  (Middle aged)</item>
         <item>60+ (Senior Adults)</item>

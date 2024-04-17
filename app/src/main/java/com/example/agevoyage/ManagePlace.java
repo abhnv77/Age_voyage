@@ -31,7 +31,7 @@ public class ManagePlace extends AppCompatActivity {
         cardlogout.setOnClickListener(new View.OnClickListener() {  //logout admin
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ManagePlace.this, LoginAdmin.class);
+                Intent intent = new Intent(ManagePlace.this, loginPage.class);
                 startActivity(intent);
             }
         });

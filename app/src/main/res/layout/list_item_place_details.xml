@@ -2,60 +2,58 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:padding="16dp">
 
     <!-- ImageView to display the place image -->
+    <ImageView
+        android:id="@+id/imageViewPlaceImage"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/ka_state"
+        android:scaleType="centerCrop" 
+    android:adjustViewBounds="true"
+    android:layout_marginBottom="8dp"/>
 
 
-    <!-- Vertical LinearLayout to hold place details -->
-    <LinearLayout
-        android:layout_width="0dp"
+    <!-- TextViews to display place name and details -->
+    <TextView
+        android:id="@+id/textViewPlaceName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:elevation="10dp"
-        android:paddingStart="16dp">
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:text="Place Name" />
 
-        <!-- TextViews to display place name and details -->
-        <TextView
-            android:id="@+id/textViewPlaceName"
-            android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textViewDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Details" />
+
+    <!-- Buttons for delete and edit -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/buttonEdit"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:text="Place Name" />
+            android:text="Edit"
+            android:textSize="12sp"
+            android:elevation="8dp"
+            android:layout_marginEnd="8dp"/> <!-- You can adjust the text size to make the button appear smaller -->
 
-        <TextView
-            android:id="@+id/textViewDetails"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/buttonDelete"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Details" />
-
-        <!-- Buttons for delete and edit -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="end">
-
-            <Button
-                android:id="@+id/buttonEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edit"
-                android:textSize="12sp"
-                android:elevation="8dp"
-                android:layout_marginEnd="8dp"/> <!-- You can adjust the text size to make the button appear smaller -->
-
-            <Button
-                android:id="@+id/buttonDelete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:elevation="8dp"
-                android:text="Delete"
-                android:textSize="12sp" /> <!-- You can adjust the text size to make the button appear smaller -->
-
-        </LinearLayout>
+            android:elevation="8dp"
+            android:text="Delete"
+            android:textSize="12sp" /> <!-- You can adjust the text size to make the button appear smaller -->
     </LinearLayout>
 </LinearLayout>

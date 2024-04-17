@@ -18,7 +18,7 @@
     <EditText
         android:id="@+id/editTextPlaceName"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="38dp"
         android:hint="Enter Place Name"
         android:layout_marginTop="95dp"
         android:inputType="text" />
@@ -26,9 +26,17 @@
     <EditText
         android:id="@+id/descriptionEditText"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="38dp"
         android:hint="Enter Description"
         android:layout_below="@id/editTextPlaceName"
+        android:layout_marginTop="16dp"
+        android:inputType="text" />
+    <EditText
+        android:id="@+id/locationEditText"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:hint="Enter location url"
+        android:layout_below="@id/descriptionEditText"
         android:layout_marginTop="16dp"
         android:inputType="text" />
 
@@ -36,7 +44,7 @@
         android:id="@+id/spinnerSelectState"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_below="@id/descriptionEditText"
+        android:layout_below="@id/locationEditText"
         android:layout_marginTop="16dp" />
 
     <Spinner
@@ -54,13 +62,20 @@
         android:layout_below="@id/spinnerBestTime"
         android:layout_marginTop="16dp"
         android:hint="Age Category" />
+    <Spinner
+        android:id="@+id/spinnerJobCategories"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_below="@id/spinnerAgeCategory"
+        android:layout_marginTop="16dp"
+        android:hint="Job Category" />
 
     <TextView
         android:id="@+id/budget_amount"
         android:padding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/spinnerAgeCategory"
+        android:layout_below="@id/spinnerJobCategories"
         android:layout_marginTop="16dp"
         android:text="Selected Amount: ₹0"
         android:layout_gravity="center"

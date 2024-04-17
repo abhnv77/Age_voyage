@@ -48,14 +48,10 @@ public class signup extends AppCompatActivity {
                 // Proceed with signup process
                 Boolean checkUserEmail = databaseHelper.checkEmail(email);
                 if (!checkUserEmail) {
-                    Boolean insert = databaseHelper.insertData(email, password);
-                    if (insert) {
-                        Toast.makeText(signup.this, "Sign up successful", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), loginPage.class);
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(signup.this, "Sign up failed", Toast.LENGTH_SHORT).show();
-                    }
+                    // If email is not already registered, start the SendOtpActivity
+                    Intent intent = new Intent(signup.this, SendOTPActivity.class);
+                    startActivity(intent);
+                    finish(); // Finish the current activity if needed
                 } else {
                     Toast.makeText(signup.this, "User already exists, please login", Toast.LENGTH_SHORT).show();
                 }

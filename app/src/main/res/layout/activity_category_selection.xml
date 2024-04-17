@@ -1,11 +1,9 @@
-<!-- activity_filter.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/bg"
     android:padding="10dp">
-
 
     <TextView
         android:layout_width="wrap_content"
@@ -28,8 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginBottom="30dp"
-        android:padding="10dp"
-        />
+        android:padding="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -42,12 +39,13 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginBottom="30dp"
-        android:padding="10dp"/>
+        android:padding="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Select Budget of Travel" />
+
     <TextView
         android:id="@+id/textView_budget_amount"
         android:layout_width="wrap_content"
@@ -56,21 +54,38 @@
         android:layout_marginBottom="10dp"
         android:text="Selected Amount: ₹0"
         android:layout_gravity="center"
-        android:fontFamily="@font/lato_black"/>
+        android:fontFamily="@font/lato_black" />
 
     <!-- Slider for Budget -->
-
     <SeekBar
         android:id="@+id/seekBar_budget"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp" />
 
-    <Button
-        android:id="@+id/button_apply_filters"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Apply Filters" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_apply_filters"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Apply Filters" />
+
+        <Button
+            android:id="@+id/selectstate"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Select State" />
+
+    </LinearLayout>
 
 </LinearLayout>

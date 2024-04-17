@@ -24,7 +24,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="340dp"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_margin="20dp"
         android:padding="10dp"
         android:background="@drawable/custom_edittext"
         app:cardCornerRadius="30dp"
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingTop="24dp">
+            android:paddingTop="14dp">
 
             <TextView
                 android:id="@+id/logintext"
@@ -88,7 +88,6 @@
                 android:text="Login"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />
-
 
 
         </LinearLayout>

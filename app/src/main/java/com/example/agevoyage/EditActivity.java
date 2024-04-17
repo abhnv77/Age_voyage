@@ -1,5 +1,6 @@
 package com.example.agevoyage;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -8,7 +9,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
-import android.support.annotation.Nullable;
+import android.util.Base64;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,16 +19,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class EditActivity extends AppCompatActivity {
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
-    private EditText editTextPlaceName,descriptionEditText;
-    private Spinner spinnerSelectState;
+public class EditActivity extends AppCompatActivity {
+    private EditText editTextPlaceName, descriptionEditText,locationEditText;
+    private Spinner spinnerSelectState,spinnerJobCategories;
     private Spinner spinnerBestTime;
     private Spinner spinnerAgeCategory;
     private Button buttonSave;
     private SeekBar seekBarBudget;
     private String imageUriString;
-    private Button  buttonSelectImage;
+    private Button buttonSelectImage;
     private DatabaseHelper databaseHelper;
     private int placeId;
 
@@ -41,9 +45,12 @@ public class EditActivity extends AppCompatActivity {
         spinnerSelectState = findViewById(R.id.spinnerSelectState);
         spinnerBestTime = findViewById(R.id.spinnerBestTime);
         spinnerAgeCategory = findViewById(R.id.spinnerAgeCategory);
+        spinnerJobCategories = findViewById(R.id.spinnerJobCategories);
         buttonSave = findViewById(R.id.buttonSave);
         seekBarBudget = findViewById(R.id.seekBar_budget);
         buttonSelectImage = findViewById(R.id.buttonSelectImage);
+        descriptionEditText = findViewById(R.id.descriptionEditText);
+        locationEditText= findViewById(R.id.locationEditText);  //new
 
         // Initialize DatabaseHelper
         databaseHelper = new DatabaseHelper(this);
@@ -84,11 +91,25 @@ public class EditActivity extends AppCompatActivity {
         if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
             // Get the URI of the selected image
             Uri imageUri = data.getData();
-            imageUriString = imageUri.toString(); // Store the image URI as a string
 
-            // Set the selected image file name
-            TextView selectedImageTextView = findViewById(R.id.selected_image);
-            selectedImageTextView.setText("Selected Image: " + getFileName(imageUri));
+            try {
+                // Convert the selected image to a byte array
+                InputStream inputStream = getContentResolver().openInputStream(imageUri);
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                byte[] buffer = new byte[1024];
+                int len;
+                while ((len = inputStream.read(buffer)) != -1) {
+                    byteArrayOutputStream.write(buffer, 0, len);
+                }
+                byte[] imageBytes = byteArrayOutputStream.toByteArray();
+                imageUriString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+
+                // Set the selected image file name
+                TextView selectedImageTextView = findViewById(R.id.selected_image);
+                selectedImageTextView.setText("Selected Image: " + getFileName(imageUri));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -127,6 +148,13 @@ public class EditActivity extends AppCompatActivity {
                 R.array.age_categories_array, android.R.layout.simple_spinner_item);
         ageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAgeCategory.setAdapter(ageAdapter);
+
+        ArrayAdapter<CharSequence> jobAdapter = ArrayAdapter.createFromResource(this,
+                R.array.job_categories_array, android.R.layout.simple_spinner_item);
+        jobAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerJobCategories.setAdapter(jobAdapter);
+
+
     }
 
     private void populateFields() {
@@ -134,13 +162,22 @@ public class EditActivity extends AppCompatActivity {
         if (cursor != null && cursor.moveToFirst()) {
             String placeName = cursor.getString(cursor.getColumnIndex("name"));
             String state = cursor.getString(cursor.getColumnIndex("state"));
+            String location = cursor.getString(cursor.getColumnIndex("location"));
             String bestTime = cursor.getString(cursor.getColumnIndex("best_time"));
             String ageCategory = cursor.getString(cursor.getColumnIndex("age_category"));
-            int budgetAmount = cursor.getInt(cursor.getColumnIndexOrThrow("budgetamount"));
             String description = cursor.getString(cursor.getColumnIndex("description"));
+            int budgetAmount = cursor.getInt(cursor.getColumnIndex("budgetamount")); // Use getInt for budget amount
+            String jobCategory = cursor.getString(cursor.getColumnIndex("job_category"));
 
             // Set the fetched data to the EditText fields and spinners
             editTextPlaceName.setText(placeName);
+            descriptionEditText.setText(description);
+            locationEditText.setText(location);
+
+            int jobCategoryPosition = getJobCategoryPosition(jobCategory);
+            if (jobCategoryPosition != -1) {
+                spinnerJobCategories.setSelection(jobCategoryPosition);
+            }
 
             // Find the position of the existing data in the spinner and set it
             int statePosition = getStatePosition(state);
@@ -155,8 +192,7 @@ public class EditActivity extends AppCompatActivity {
             if (ageCategoryPosition != -1)
                 spinnerAgeCategory.setSelection(ageCategoryPosition);
 
-            seekBarBudget.setProgress(budgetAmount - 5000);
-
+            seekBarBudget.setProgress(budgetAmount - 5000); // No need for parseInt since it's already an int
             TextView budgetAmountTextView = findViewById(R.id.budget_amount);
             budgetAmountTextView.setText("Selected Amount: ₹" + budgetAmount);
 
@@ -186,6 +222,7 @@ public class EditActivity extends AppCompatActivity {
         }
     }
 
+
     private int getStatePosition(String state) {
         // Find the position of the state in the spinner data
         ArrayAdapter<CharSequence> adapter = (ArrayAdapter<CharSequence>) spinnerSelectState.getAdapter();
@@ -204,6 +241,15 @@ public class EditActivity extends AppCompatActivity {
         return adapter.getPosition(ageCategory);
     }
 
+    private int getBudgetAmount() {
+        // Get the SeekBar's progress and add 5000 to it to get the actual budget amount
+        return seekBarBudget.getProgress() + 5000;
+    }
+    private int getJobCategoryPosition(String jobCategory) {
+        // Find the position of the job category in the spinner data
+        ArrayAdapter<CharSequence> adapter = (ArrayAdapter<CharSequence>) spinnerJobCategories.getAdapter();
+        return adapter.getPosition(jobCategory);
+    }
 
     private void updatePlaceData() {
         // Get the updated data from the views
@@ -211,19 +257,36 @@ public class EditActivity extends AppCompatActivity {
         String bestTime = spinnerBestTime.getSelectedItem().toString();
         String ageCategory = spinnerAgeCategory.getSelectedItem().toString();
         String state = spinnerSelectState.getSelectedItem().toString();
-        int budgetAmount = seekBarBudget.getProgress() + 5000; // Assuming the SeekBar range is from 5000 to 50000+
-        String imageUri = imageUriString; // Get the updated image URI
+        String jobCategory = spinnerJobCategories.getSelectedItem().toString();
+        String location = locationEditText.getText().toString(); // Get the location data from the appropriate view or input field
         String description = descriptionEditText.getText().toString();
 
-        boolean isUpdated = databaseHelper.updatePlaceData(placeId, placeName, bestTime, ageCategory, state, imageUri, budgetAmount,description);
+        int budgetAmount = getBudgetAmount(); // Updated to use the method to get the budget amount
+
+
+
+        if (imageUriString == null || imageUriString.isEmpty()) {
+            showToast("Please select an image.");
+            return;
+        }
+
+        // Insert the place details into the database
+        byte[] imageBytes = Base64.decode(imageUriString, Base64.DEFAULT);
+
+        boolean isUpdated = databaseHelper.updatePlaceData(placeId, placeName, bestTime, ageCategory, state, location, imageBytes, budgetAmount, description, jobCategory);
         if (isUpdated) {
             Toast.makeText(this, "Place data updated successfully", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(EditActivity.this,login_admin_view.class);
+            Intent intent = new Intent(EditActivity.this, login_admin_view.class);
             finish(); // Close the activity
             startActivity(intent);
         } else {
             Toast.makeText(this, "Failed to update place data", Toast.LENGTH_SHORT).show();
         }
+    }
+
+
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
 }

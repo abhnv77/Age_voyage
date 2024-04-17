@@ -4,4 +4,20 @@
     <color name="white">#FFFFFFFF</color>
     <color name="purple">#8692f7</color>
 
+    <color name="dialog_color_1">#FDD736</color>
+    <color name="dialog_color_2">#3B5796</color>
+
+
+    <color name="colorPrimary">#536DFE</color>
+    <color name="colorPrimaryDark">#536DFE</color>
+    <color name="colorAccent">#F44336</color>
+    <color name="colorTextPrimary">#212121</color>
+    <color name="colorTextSecondary">#757575</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
+
+
+
+
+
 </resources>

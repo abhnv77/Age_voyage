@@ -11,11 +11,21 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>
     </style>
+
     <style name="ShapeableImageView_BOTTOMRoundedCorners" parent="">
         <item name="cornerFamilyBottomLeft">rounded</item>
         <item name="cornerSizeBottomLeft">32dp</item>
         <item name="cornerFamilyBottomRight">rounded</item>
         <item name="cornerSizeBottomRight">32dp</item>
+    </style>
+    
+    <style name="MyRatingBar" parent="Widget.AppCompat.RatingBar">
+
+<!--        nonselected color-->
+        <item name="colorControlNormal">#4D000000</item>
+
+
+        <item name="colorControlActivated">@color/dialog_color_1</item>
     </style>
 
 </resources>

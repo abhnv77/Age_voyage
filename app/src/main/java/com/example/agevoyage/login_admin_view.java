@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,8 +53,8 @@ public class login_admin_view extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Navigate back to LoginAdminAdd activity
-                Intent intent = new Intent(login_admin_view.this, LoginAdmim_Add.class);
+                // Navigate back to manageolace activity
+                Intent intent = new Intent(login_admin_view.this, ManagePlace.class);
                 startActivity(intent);
             }
         });
@@ -72,11 +74,21 @@ public class login_admin_view extends AppCompatActivity {
         Cursor cursor = databaseHelper.getAllPlaceDetails();
         if (cursor.moveToFirst()) {
             do {
-                @SuppressLint("Range") String placeName = cursor.getString(cursor.getColumnIndex("name"));
-                @SuppressLint("Range") String bestTime = cursor.getString(cursor.getColumnIndex("best_time"));
-                @SuppressLint("Range") String ageCategory = cursor.getString(cursor.getColumnIndex("age_category"));
-                @SuppressLint("Range") String imageUri = cursor.getString(cursor.getColumnIndex("image_uri"));
-                placeDetailsList.add(placeName + "\nBest Time: " + bestTime + "\nAge Category: " + ageCategory + "\nImage URI: " + imageUri);
+                String placeName = cursor.getString(cursor.getColumnIndex("name"));
+                String bestTime = cursor.getString(cursor.getColumnIndex("best_time"));
+                String ageCategory = cursor.getString(cursor.getColumnIndex("age_category"));
+                byte[] imageData = cursor.getBlob(cursor.getColumnIndex("image")); // Retrieve image blob data
+
+                Bitmap imageBitmap = null;
+                if (imageData != null) {
+                    imageBitmap = BitmapFactory.decodeByteArray(imageData, 0, imageData.length); // Convert blob data to Bitmap
+                } else {
+                    // Handle the case where the image data is null, such as displaying a default image or skipping the addition of the place details
+                    // For example, you can set a default image bitmap
+                    imageBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.tl_state);
+                }
+
+                placeDetailsList.add(placeName + "\nBest Time: " + bestTime + "\nAge Category: " + ageCategory );
             } while (cursor.moveToNext());
         }
         cursor.close();

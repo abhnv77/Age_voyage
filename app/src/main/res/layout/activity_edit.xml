@@ -26,19 +26,46 @@
         android:layout_marginTop="10dp"
         android:inputType="text" />
 
+    <EditText
+        android:id="@+id/descriptionEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Description"
+        android:layout_below="@id/editTextPlaceName"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:id="@+id/locationEditText"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:hint="Enter location url"
+        android:layout_below="@id/descriptionEditText"
+        android:layout_marginTop="16dp"
+        android:inputType="text" />
+
+
     <Spinner
         android:id="@+id/spinnerBestTime"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_below="@id/editTextPlaceName"
+        android:layout_below="@id/locationEditText"
         android:layout_marginTop="10dp"
         android:hint="Best Time to Visit" />
+    <!-- Add below spinnerBestTime -->
+    <Spinner
+        android:id="@+id/spinnerJobCategories"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/spinnerBestTime"
+        android:layout_marginTop="10dp"
+        android:hint="Job Categories" />
+
 
     <Spinner
         android:id="@+id/spinnerAgeCategory"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_below="@id/spinnerBestTime"
+        android:layout_below="@id/spinnerJobCategories"
         android:layout_marginTop="10dp"
         android:hint="Age Category" />
 
@@ -55,6 +82,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/spinnerSelectState"
+        android:max="55000"
         android:layout_marginTop="10dp"/>
 
     <TextView
@@ -89,6 +117,17 @@
         android:layout_marginTop="10dp"
         android:text="Save" />
 
+    <TextView
+        android:id="@+id/selected_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonSave"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="File"
+        android:textColor="@color/black" />
+
+
+
 </RelativeLayout>
 
-<!--run-->

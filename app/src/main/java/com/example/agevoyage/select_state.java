@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
     public class select_state extends AppCompatActivity implements state_ADAPTER.OnStateClickListener {
@@ -30,7 +32,7 @@ import java.util.ArrayList;
         // Populate RecyclerView with state data
         stateModels = new ArrayList<>();
 
-        stateModels.add(new state_MODEL(R.drawable.kerala_state, "","kerala"));
+        stateModels.add(new state_MODEL(R.drawable.kerala_state, "","Kerala"));
         stateModels.add(new state_MODEL(R.drawable.agra_taj_mahal, "","Delhi"));
         stateModels.add(new state_MODEL(R.drawable.tn_state, "","Tamil Nadu"));
         stateModels.add(new state_MODEL(R.drawable.rj_state, "","Rajasthan"));
@@ -52,12 +54,14 @@ import java.util.ArrayList;
 
     }
 
-    @Override
-    public void onStateClick(state_MODEL state) {
-        // Handle the click event for the state item
-        // For example, you can start a new activity to display details about the state
-        Intent intent = new Intent(this, Category_Selection.class);
-        intent.putExtra("state_name", state.getState());
-        startActivity(intent);
+        @Override
+        public void onStateClick(state_MODEL state) {
+            // Handle the click event for the state item
+            // For example, you can start a new activity to display details about the state
+//
+            Intent intent = new Intent(this, Category_Selection.class);
+            intent.putExtra("state_name", state.getName()); // Pass the state name as an extra
+            startActivity(intent);
+        }
+
     }
-}

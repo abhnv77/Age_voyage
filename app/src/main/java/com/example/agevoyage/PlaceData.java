@@ -6,15 +6,17 @@ public class PlaceData {
     private String bestTime;
     private String ageCategory;
 
+    private String imageUri;
     public PlaceData() {
         // Default constructor
     }
 
-    public PlaceData(int id, String name, String bestTime, String ageCategory) {
+    public PlaceData(int id, String name, String bestTime, String ageCategory, String imageUri) {
         this.id = id;
         this.name = name;
         this.bestTime = bestTime;
         this.ageCategory = ageCategory;
+        this.imageUri = imageUri;
     }
 
     public int getId() {
@@ -47,5 +49,13 @@ public class PlaceData {
 
     public void setAgeCategory(String ageCategory) {
         this.ageCategory = ageCategory;
+    }
+
+    public String getImageUri() {
+        return imageUri;
+    }
+
+    public void setImageUri(String imageUri) {
+        this.imageUri = imageUri;
     }
 }
